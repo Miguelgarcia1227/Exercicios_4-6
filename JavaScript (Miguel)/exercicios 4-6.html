@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="exercicios 4-6.js"></script>
+</head>
+
+<body>
+         
+         <h1> Lista de Tarefas</h1>
+    
+    <label for="item">Nova Tarefa:</label>
+    <input type="text" id="item">
+    <button onclick="adicionarItem()">Adicionar</button>
+    
+
+    
+    <button onclick="mostrarEstoque()">Mostrar Lista de Tarefas!</button>
+    
+    <div id="output"></div>
+    
+    <script>
+        let estoque = [];
+        let outputDiv = document.getElementById("output");
+
+        function adicionarItem() {
+            let novoItem = document.getElementById("item").value;
+            estoque.push(novoItem);
+            outputDiv.innerHTML = "Livro adicionado a Lista: " + novoItem;
+        }
+
+        function removerItem() {
+            let itemRemover = document.getElementById("itemRemover").value;
+            let index = estoque.indexOf(itemRemover);
+
+            if (index !== -1) {
+                estoque.splice(index, 1);
+                outputDiv.innerHTML = "Livro removido da Lista: " + itemRemover;
+            } else {
+                outputDiv.innerHTML = "Livro não encontrado na lista.";
+            }
+        }
+
+        function mostrarEstoque() {
+            if (estoque.length === 0) {
+                outputDiv.innerHTML = "A lista está vazia.";
+            } else {
+                let listaItens = "Eventos do Dia:<br>";
+                for (let i = 0; i < estoque.length; i++) {
+                    listaItens += (i + 1) + ". " + estoque[i] + "<br>";
+                }
+                outputDiv.innerHTML = listaItens;
+            }
+        }
+    </script>  
+         
+         <!-- //--------------------------------------------------------------//  -->
+
+
+
+
+</body>
+
+</html>
